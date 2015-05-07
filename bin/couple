@@ -20,7 +20,7 @@ program
     if(!email || !password){
       return console.log('Please provide the email and password of the target Couple account.');
     }
-    var couple = new Couple();
+    //var couple = new Couple();
     couple.authenticate(email, password, function(err, resObj){
       if(err) {
         console.error(err);
@@ -40,9 +40,14 @@ program
           if (err) {
             console.error('There was an error ' + err);
           }
-          console.log('I have no idea what Im doing', this.authObject.user.userName);
+          console.log('I have no idea what Im doing', couple.authObject.user.userName);
+          couple.download(function (err) {
+            if (err) {
+              console.error(err);
+            }
+            console.log('Download successful');
+          });
         });
-        couple.download();
       });
     }
   });
