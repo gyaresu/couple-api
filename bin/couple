@@ -2,9 +2,11 @@
 
 'use strict';
 
+var prompt = require('prompt');
 var program = require('commander');
-// var prompt = require('prompt');
 var Couple = require('../lib/couple.js');
+
+var couple = new Couple();
 
 program
   .version('0.0.1');
@@ -25,6 +27,24 @@ program
       }
       console.log(couple.identify());
     });
+  });
+
+program
+  .command('download')
+  .description('Download images to ./private/')
+  .action(function() {
+    if(!this.authObject){
+      prompt.start();
+      prompt.get(['email', 'password'], function (err, result) {
+        couple.authenticate(result.email, result.password, function (err, resObj) {
+          if (err) {
+            console.error('There was an error ' + err);
+          }
+          console.log('I have no idea what Im doing', this.authObject.user.userName);
+        });
+        couple.download();
+      });
+    }
   });
 
 program.parse(process.argv);
