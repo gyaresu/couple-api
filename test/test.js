@@ -85,11 +85,18 @@ describe('couple-api', function() {
         /authenticate/
       );
     });
-
+  });
     // it('should identify the client', function() {
     //   //todo
     // });
 
-  });
+  describe('download()', function() {
 
+    it('should have a download method', function() {
+      var couple = new Couple();
+      assert.equal(typeof couple, 'object');
+      assert.equal(typeof couple.download, 'function');
+    });
+
+  });
 });

@@ -38,14 +38,14 @@ program
       prompt.get(['email', 'password'], function (err, result) {
         couple.authenticate(result.email, result.password, function (err, resObj) {
           if (err) {
-            console.error('There was an error ' + err);
+            console.error('There was an error authenticating: ' + err);
           }
-          console.log('I have no idea what Im doing', couple.authObject.user.userName);
+          console.log('Authentication successful for user: ', couple.authObject.user.userName);
           couple.download(function (err) {
             if (err) {
               console.error(err);
             }
-            console.log('Download successful');
+            console.log('Downloads successful');
           });
         });
       });
