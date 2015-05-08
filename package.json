@@ -26,8 +26,10 @@
   "homepage": "https://github.com/bitjson/couple-api",
   "dependencies": {
     "commander": "^2.7.1",
+    "download": "^4.1.2",
+    "moment": "^2.10.2",
     "prompt": "^0.2.14",
-    "request": "^2.54.0"
+    "request": "^2.55.0"
   },
   "devDependencies": {
     "coveralls": "^2.11.2",

@@ -30,9 +30,9 @@ program
   });
 
 program
-  .command('download')
-  .description('Download images to ./private/')
-  .action(function() {
+  .command('download <type>')
+  .description('Download images and videos to ./private/{type}')
+  .action(function(type) {
     if(!this.authObject){
       prompt.start();
       prompt.get(['email', 'password'], function (err, result) {
@@ -41,11 +41,11 @@ program
             console.error('There was an error authenticating: ' + err);
           }
           console.log('Authentication successful for user: ', couple.authObject.user.userName);
-          couple.download(function (err) {
+          couple.download(type, function (err) {
             if (err) {
               console.error(err);
             }
-            console.log('Downloads successful');
+            //console.log('Downloads successful');
           });
         });
       });
